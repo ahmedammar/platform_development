@@ -17,6 +17,7 @@ package com.android.commands.monkey;
 
 import android.os.Build;
 import android.os.SystemClock;
+import android.os.SystemProperties;
 import android.view.Display;
 import android.view.WindowManagerImpl;
 import android.util.DisplayMetrics;
@@ -162,6 +163,13 @@ public class MonkeySourceNetworkVars {
         VAR_MAP.put("monkey.version", new VarGetter() {
                 public String get() {
                     return Integer.toString(MonkeySourceNetwork.MONKEY_NETWORK_VERSION);
+                }
+            });
+
+        // custom fps
+        VAR_MAP.put("debug.sf.fps", new VarGetter() {
+                public String get() {
+                    return SystemProperties.get("debug.sf.fps");
                 }
             });
     }
